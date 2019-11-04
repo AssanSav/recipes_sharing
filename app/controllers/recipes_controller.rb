@@ -30,7 +30,15 @@ class RecipesController < ApplicationController
         erb :"/recipes/show.html"
     end
 
-    
+    get "/recipes/:slug/edit" do
+        redirect_if_not_logged_in?
+        @recipe = current_user.recipes.find_by_slug(params[:slug])
+        if @recipe
+            erb :"/recipes/edit.html"
+        else 
+            redirect to '/recipes/new'
+        end
+    end
     
 
 end
