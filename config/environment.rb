@@ -2,11 +2,10 @@ ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
+Dotenv.load #if ENV['SINATRA_ENV'] == "development" #=> allow the var .env to be loaded only if SINATRA_ENV is development
 
-ActiveRecord::Base.establish_connection(
-  :adapter => "sqlite3",
-  :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
-)
+set :database_file, "./database.yml" #=> establishing the connection to the database by directing the use of the .yml file
 
-require './app/controllers/application_controller'
+#require './app/controllers/application_controller'
 require_all 'app'
+require 'pry'
