@@ -4,9 +4,8 @@ class CommentsController < ApplicationController
         @recipe = Recipe.find_by_slug(params[:recipe_slug])
         if @recipe
             @comment = @recipe.comments.create(content: params[:comment][:content])
+            flash[:message] = "Comment Can't Be Blank!"
             redirect "/recipes/#{@recipe.slug}"
-        else
-            erb :"/comments/new.html"
         end
     end
 

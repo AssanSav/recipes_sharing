@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191104063346) do
+ActiveRecord::Schema.define(version: 20191104083202) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20191104063346) do
     t.text     "ingredient"
     t.text     "process"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "deleted",    default: false
   end
 
   create_table "users", force: :cascade do |t|
