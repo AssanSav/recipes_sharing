@@ -7,3 +7,6 @@ end
 use Rack::MethodOverride
 
 run ApplicationController
+use CommentsController
+use RecipesController
+use UsersController
