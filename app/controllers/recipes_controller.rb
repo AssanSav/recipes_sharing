@@ -51,6 +51,12 @@ class RecipesController < ApplicationController
             erb :'recipes/edit.html'
         end
     end
-    
 
+    delete '/recipes/:slug' do 
+        @recipe = Recipe.find_by_slug(params[:slug])
+        redirect '/recipes/new' unless @recipe
+        @recipe.update(deleted: true)
+        redirect to '/recipes/new'
+    end
+    
 end
