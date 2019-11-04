@@ -1,15 +1,53 @@
+<a href="/recipes/new">Recipe Id: </a>
+
+<% if flash.has?(:message) %>
+    <h2 style="color:red;"><%= flash[:message] %></h2>
+<% end %>
 
 
-
-
-
-
-
-
-
+<% if !@current_user.recipes.include?(@recipe) %>
+    
 <%= @recipe.id %> <br>
 <p>
     Name: <%= @recipe.name %><br><br>
     Ingredients: <%= @recipe.ingredient %><br><br>
     Process: <%= @recipe.process %>
 </p>
+
+<h2>Comments</h2>
+    <% @recipe.comments.each.with_index(1) do |comment, index| %>
+        <%= index %>-
+        <%= comment.content %><br>
+    <% end %><br <br>
+
+    <form action="/recipes/<%= @recipe.slug %>/comments" method="POST">
+        <textarea name="comment[content]" id="" cols="30" rows="5" placeholder="write your comment"></textarea>
+        <input type="submit" class="button" value="Add Comment">
+    </form>
+    <br>
+    
+<% else %>
+    <%= @recipe.id %> <br><br>
+    <strong>Name: </strong><%= @recipe.name %><br><br>
+    <strong>Ingredients: </strong><%= @recipe.ingredient %><br><br>
+    <strong>Process: </strong><%= @recipe.process %><br>
+
+    <h2>Comments</h2>
+    <% @recipe.comments.each.with_index(1) do |comment, index| %>
+        <%= index %>-
+        <%= comment.content %><br>
+    <% end %><br>
+    
+    <form action="/recipes/<%= @recipe.slug %>/comments" method="POST">
+        <textarea name="comment[content]" id="" cols="30" rows="5" placeholder="write your comment"></textarea>
+        <input type="submit" class="button" value="Add Comment">
+    </form> <br>
+    
+    <a href="/recipes/<%= @recipe.slug %>/edit" class="button" >Edit Recipe</a><br><br>
+
+<% end %>
+
+<form action="/recipes/<%= @recipe.slug %>" method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="button"  value="Delete">Delete</button>
+</form>
