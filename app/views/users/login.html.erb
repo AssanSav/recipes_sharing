@@ -1,1 +1,12 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Log In</h1>
+<% if flash.has?(:message) %> 
+    <h4 style="color: brown;"><%= flash[:message] %></h4> 
+<% end %>
+
+<form action="/login" method="POST">
+    <p>
+        <label>Username </label><input type="text" name="user[username]">
+        <label>Password </label><input type="password" name="user[password]">
+    </p>
+    <input type="submit" class="button"  value="LogIn">
+</form>
