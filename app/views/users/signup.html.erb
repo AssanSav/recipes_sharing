@@ -1,1 +1,26 @@
-<h1>This is the Model's index page.</h1>
+<h1>Create A New Account</h1>
+
+<% if flash.has?(:message) %> 
+    <p style="color: red;"><%= flash[:message] %></p>
+<% end %>
+
+<form action="/signup" method="POST">
+    
+<div class="signup">
+    <label>Username </label>
+    <input type="text" name="user[username]" />
+
+    <label>Email </label>
+    <input type="text" name="user[email]" />
+
+    <label>Password </label>
+    <input type="password" name="user[password]" />
+
+    <label>Confirm Password </label>
+    <input type="password" name="user[password_confirmation]" />
+    <br>
+
+    <input type="submit" class="button" value="Subscribe" />
+</div>
+
+</form>
