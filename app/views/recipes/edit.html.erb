@@ -1,1 +1,19 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<% if flash.has?(:message) %>
+    <h2 style="color:red;"><%= flash[:message] %></h2>
+<% end %>
+
+<form action="/recipes/<%= @recipe.slug %>" method="POST">
+    <input type="hidden" name="_method" value="patch">
+
+    <label>Name: </label>
+    <input type="text" name="recipe[name]" id="<%= @recipe.slug %>"
+        value="<%= @recipe.name %>"><br><br>
+    <label>Ingredient: </label>
+    <textarea name="recipe[ingredient]" id="<%= @recipe.slug %>" cols="30"
+        rows="5"><%= @recipe.ingredient%></textarea><br><br>
+    <label>Cooking Process:</label>
+    <textarea name="recipe[process]" id="<%= @recipe.slug %>" cols="30"
+        rows="5"><%= @recipe.process %></textarea><br>
+
+    <input type="submit" class="button" value="Save">
+</form>

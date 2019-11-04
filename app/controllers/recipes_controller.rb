@@ -40,5 +40,17 @@ class RecipesController < ApplicationController
         end
     end
     
+    patch '/recipes/:slug' do 
+        @recipe = current_user.recipes.find_by_slug(params[:slug])
+        if @recipe
+            @recipe.update(name: params[:recipe][:name], ingredient: params[:recipe][:ingredient], process: params[:recipe][:process])
+            flash[:message] = "Recipe Successfully Apdated!"
+            redirect to "/recipes/#{@recipe.slug}"
+        else 
+            flash[:message] = "Sorry Record Not Found!"
+            erb :'recipes/edit.html'
+        end
+    end
+    
 
 end
