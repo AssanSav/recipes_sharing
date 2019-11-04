@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-  <head>
+<head>
     <title>RecipesSharing</title>
     <link rel="stylesheet" href="/stylesheets/main.css" />
-  </head>
-  
-  <body>
-    <div class="wrapper">
+</head>
 
+<body>
+    <div class="wrapper">
+        <% if logged_in? %>
+            <form action="/logout" method="POST">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" class="button" value="Log Out">
+            </form>
+        <% else %>
+            <a href="/signup" class="button">Subscribe</a>
+            <a href="/login" class="button">Log In</a>
+            <a href="/recipes" class="button">All Recipes</a>
+        <% end %>
+            <h4 style="color:blue;">Current User ID: <%= session[:user_id] %> </h4>
         <%= yield %>
 
-      <footer class="branding">
+    <footer class="branding">
         
-      </footer>
+    </footer>
     </div>
 
-  </body>
+</body>
 </html>

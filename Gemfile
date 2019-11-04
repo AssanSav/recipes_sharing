@@ -14,7 +14,6 @@ gem 'foreman'
 gem 'rails_12factor'
 gem 'sysrandom'
 gem 'json'
-gem 'tux'
 gem 'rack-flash3'
 gem 'nokogiri'
 
