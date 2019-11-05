@@ -33,7 +33,7 @@
             font-family: Arial;
             font-size: 15px;
             font-weight: bold;
-            padding: 6px 24px;
+            padding: 4px 8px;
             text-decoration: none;
             text-shadow: 0px 1px 0px #aade7c;
         }
@@ -55,26 +55,38 @@
             margin-bottom: 40px;
             padding-left: 250px;
         }
+
+        .link {
+            background: none!important;
+            border: none;
+            padding: 0!important;
+            font-family: arial, sans-serif;
+            color: red;
+            text-decoration: underline;
+            cursor: pointer;
+            }
     </style>
 </head>
 
 <body>
     <div class="wrapper">
         <% if logged_in? %>
-        <form action="/logout" method="POST">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" class="button" value="Log Out">
-        </form>
+            <form action="/logout" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" class="button" value="Log Out">
+            </form>
         <% else %>
-        <a href="/signup" class="button">Subscribe</a>
-        <a href="/login" class="button">Log In</a>
-        <a href="/recipes" class="button">All Recipes</a>
+            <a href="/signup" class="button">Subscribe</a>
+            <a href="/login" class="button">Log In</a>
+            <a href="/recipes" class="button">All Recipes</a>
         <% end %>
+
         <h4 style="color:blue;">Current User ID: <%= session[:user_id] %> </h4>
+        
         <%= yield %>
 
         <footer class="branding">
-            2019 Copyright
+            2019 food recipes sharing Copyright
         </footer>
     </div>
 

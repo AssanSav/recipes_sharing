@@ -6,53 +6,64 @@
 
 
 <% if !@current_user.recipes.include?(@recipe) %>
-
     <%= @recipe.id %> <br>
     <p>
-        <strong> Name: </strong><%= @recipe.name %><br><br>
-        <strong> Ingredients: </strong><%= @recipe.ingredient %><br><br>
+        <strong>Name: </strong><%= @recipe.name %><br><br>
+        <strong>Ingredients: </strong><%= @recipe.ingredient %><br><br>
         <strong>Process: </strong><%= @recipe.process %>
     </p>
 
+    <form action="/recipes/<%= @recipe.id %>" method="POST">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" class="button"  value="Delete Recipe">
+    </form>
+
     <h2>Comments</h2>
     <% @recipe.comments.each.with_index(1) do |comment, index| %>
-        <%= index %>-<a href="/recipes/<%= @recipe.id %>/comments/<%= comment.id %>/edit">Edit</a>
-        <%= comment.content %><br>
-    <% end %><br <br>
+        <%= index %>-<%= comment.content %><br><br>
+        <% if comment.user_id == current_user.id %>
+            <form action="/recipes/<%= @recipe.id %>/comments/<%= comment.id %>" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" class="link" value="Delete Comment"/>
+            </form>
+            <a href="/recipes/<%= @recipe.id %>/comments/<%= comment.id %>/edit" class="link">Edit Comment</a><br><br>
+        <% end %>
+    <% end %><br> <br>
 
     <form action="/recipes/<%= @recipe.id %>/comments" method="POST">
         <textarea name="comment[content]" id="" cols="30" rows="5" placeholder="write your comment"></textarea>
         <input type="submit" class="button" value="Add Comment">
-    </form>
-    <br>
+    </form><br>
 
 <% else %>
-    <%= @recipe.id %> <br><br>
+    <%= @recipe.id %><br><br>
     <strong>Name: </strong><%= @recipe.name %><br><br>
     <strong>Ingredients: </strong><%= @recipe.ingredient %><br><br>
-    <strong>Process: </strong><%= @recipe.process %><br>
+    <strong>Process: </strong><%= @recipe.process %><br><br>
+
+    <a href="/recipes/<%= @recipe.id %>/edit" class="button">Edit Recipe</a><br><br>
+
+    <form action="/recipes/<%= @recipe.id %>" method="POST">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" class="button" value="Delete Recipe">
+    </form>
 
     <h2>Comments</h2>
     <% @recipe.comments.each.with_index(1) do |comment, index| %>
-        <%= index %>-<a href="/recipes/<%= @recipe.id %>/comments/<%= comment.id %>/edit">edit</a>
-        <form action="/recipes/<%= @recipe.id %>/comments/<%= comment.id %>" method="POST">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" class="link" value="Delete"/>
-        </form>
-        <%= comment.content %><br>
+        <%= index %>-<%= comment.content %><br><br>
+        <% if comment.user_id == current_user.id %> 
+            <form action="/recipes/<%= @recipe.id %>/comments/<%= comment.id %>" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" class="link" value="Delete Comment"/>
+            </form>
+            <a href="/recipes/<%= @recipe.id %>/comments/<%= comment.id %>/edit" class="link">Edit Comment</a><br><br>
+        <% end %>
     <% end %><br>
 
-<form action="/recipes/<%= @recipe.id %>/comments" method="POST">
-    <textarea name="comment[content]" id="" cols="30" rows="5" placeholder="write your comment"></textarea>
-    <input type="submit" class="button" value="Add Comment">
-</form> <br>
-
-
-<a href="/recipes/<%= @recipe.id %>/edit" class="button">Edit Recipe</a><br><br>
+    <form action="/recipes/<%= @recipe.id %>/comments" method="POST">
+        <textarea name="comment[content]" id="" cols="30" rows="3" placeholder="write your comment"></textarea>
+        <input type="submit" class="button" value="Add Comment">
+    </form><br>
 
 <% end %>
 
-<form action="/recipes/<%= @recipe.id %>" method="POST">
-    <input type="hidden" name="_method" value="delete">
-    <button type="submit" class="button" value="Delete">Delete</button>
-</form>
