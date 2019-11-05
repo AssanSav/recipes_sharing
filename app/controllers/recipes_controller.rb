@@ -17,22 +17,22 @@ class RecipesController < ApplicationController
             @recipe.save
             @recipe
             flash[:message] = "You successfully Created A New Recipe"
-            redirect ("/recipes/#{@recipe.slug}")
+            redirect ("/recipes/#{@recipe.id}")
         else
             flash[:message] = "No Column Can't Be Left Blank!!!"
             redirect to "/recipes/new"
         end
     end
 
-    get "/recipes/:slug" do
+    get "/recipes/:id" do
         redirect_if_not_logged_in?
-        @recipe = Recipe.find_by_slug(params[:slug])
+        @recipe = Recipe.find_by_id(params[:id])
         erb :"/recipes/show.html"
     end
 
-    get "/recipes/:slug/edit" do
+    get "/recipes/:id/edit" do
         redirect_if_not_logged_in?
-        @recipe = current_user.recipes.find_by_slug(params[:slug])
+        @recipe = current_user.recipes.find_by_id(params[:id])
         if @recipe
             erb :"/recipes/edit.html"
         else 
@@ -40,20 +40,20 @@ class RecipesController < ApplicationController
         end
     end
     
-    patch '/recipes/:slug' do 
-        @recipe = current_user.recipes.find_by_slug(params[:slug])
+    patch '/recipes/:id' do 
+        @recipe = current_user.recipes.find_by_id(params[:id])
         if @recipe
             @recipe.update(name: params[:recipe][:name], ingredient: params[:recipe][:ingredient], process: params[:recipe][:process])
             flash[:message] = "Recipe Successfully Apdated!"
-            redirect to "/recipes/#{@recipe.slug}"
+            redirect to "/recipes/#{@recipe.id}"
         else 
             flash[:message] = "Sorry Record Not Found!"
             erb :'recipes/edit.html'
         end
     end
 
-    delete '/recipes/:slug' do 
-        @recipe = Recipe.find_by_slug(params[:slug])
+    delete '/recipes/:id' do 
+        @recipe = Recipe.find_by_id(params[:id])
         redirect '/recipes/new' unless @recipe
         @recipe.update(deleted: true)
         redirect to '/recipes/new'

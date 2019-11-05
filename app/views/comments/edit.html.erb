@@ -1,0 +1,6 @@
+<form action="/recipes/<%= @recipe.id %>/comments/<%= @comment.id %>" method="POST">
+    <input type="hidden" name="_method" value="patch">
+    <input type="text" name="comment[content]" id="<%= @comment.id %>" value="<%= @comment.content %>">
+
+    <input type="submit" value="Edit">
+</form>
