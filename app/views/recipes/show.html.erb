@@ -13,11 +13,6 @@
         <strong>Process: </strong><%= @recipe.process %>
     </p>
 
-    <form action="/recipes/<%= @recipe.id %>" method="POST">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" class="button"  value="Delete Recipe">
-    </form>
-
     <h2>Comments</h2>
     <% @recipe.comments.each.with_index(1) do |comment, index| %>
         <%= index %>-<%= comment.content %><br><br>

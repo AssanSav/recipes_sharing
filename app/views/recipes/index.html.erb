@@ -1,10 +1,12 @@
 <h3>All Recipes</h3>
 
 <% @recipes.each.with_index(1) do |recipe, index| %>
-    <p>
+    <ol>
         <%= index %> <br>
         <strong>Name: </strong><%= recipe.name %></h3><br>
-        <strong>ingredients: </strong><%= recipe.ingredient %><br>
+        <p>
+            <strong>ingredients: </strong><%= recipe.ingredient %><br>
+        </p>
         <strong>Process: </strong><%= recipe.process %><br><br>
-    </p>
+    </ol>
 <% end %>
