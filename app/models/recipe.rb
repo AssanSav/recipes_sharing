@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
     validates :name, presence: true
     validates :ingredient, presence: true 
     validates :process, presence: true
-
+    
     def self.visible
         where(deleted: false)
     end

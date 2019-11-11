@@ -125,7 +125,6 @@ DEPENDENCIES
   dotenv
   foreman
   json
-  nokogiri
   pg (= 0.20)
   pry
   rack-flash3

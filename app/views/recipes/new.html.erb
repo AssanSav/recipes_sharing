@@ -1,5 +1,5 @@
 <% if flash.has?(:message) %>
-    <h2 style="color:red;"><%= flash[:message] %></h2>
+    <h3 style="color:red;"><%= flash[:message] %></h3>
 <% end %>
 
 <h4> Welcome <%= @current_user.username %> </h4>
@@ -12,9 +12,9 @@
     <% end %>
 
     <h3>Create A new Recipe</h3>
-    <strong>Name: </strong><input type="text" name="recipe[name]" value=""><br>
-    <strong>Ingredient: </strong><textarea name="recipe[ingredient]" cols="30" rows="3" value=""></textarea>
-    <strong>Cooking Process:</strong><textarea name="recipe[process]" cols="30" rows="3" value=""></textarea>
+    <strong>Name: </strong><input type="text" name="recipe[name]"><br>
+    <strong>Ingredient: </strong><textarea name="recipe[ingredient]" cols="30" rows="3" ></textarea>
+    <strong>Cooking Process:</strong><textarea name="recipe[process]" cols="30" rows="3"></textarea>
     <br>
     <input type="submit" class="button" value="Create">
 </form>

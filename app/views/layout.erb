@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <style>
         body {
-            background: lightskyblue;
+            background: #cacaca;
         }
 
         input,
@@ -47,13 +47,13 @@
             position: relative;
             top: 1px;
         }
-
-        footer.branding {
-            border-top: 2px solid #ccc;
-            margin-top: 480px;
-            padding-top: 20px;
-            margin-bottom: 40px;
-            padding-left: 250px;
+        
+        .branding {
+            border-top: 3px solid rgba(70, 29, 29, 0.507);
+            margin-top: 700px;
+            padding-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
         }
 
         .link {
@@ -78,13 +78,11 @@
         <% else %>
             <a href="/signup" class="button">Subscribe</a>
             <a href="/login" class="button">Log In</a>
-            <a href="/recipes" class="button">All Recipes</a>
         <% end %>
 
-        <h4 style="color:blue;">Current User ID: <%= session[:user_id] %> </h4>
-        
-        <%= yield %>
+        <h4 style="color:purple;">Current User ID: <%= session[:user_id] %> </h4>
 
+        <%= yield %>
         <footer class="branding">
             2019 food recipes sharing Copyright
         </footer>

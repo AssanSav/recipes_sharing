@@ -3,14 +3,19 @@ class UsersController < ApplicationController
     get "/signup" do
         erb :"/users/signup.html"
     end
-  
+    
     post "/signup" do
-        @user = User.create(username: params[:user][:username], email: params[:user][:email], password: params[:user][:password], password_confirmation: params[:password_confirmation])
-        if params[:user][:username] !=nil && params[:user][:email] !=nil && params[:user][:password] !=nil && params[:password_confirmation] !=nil
-            session[:user_id] = @user.id
-            redirect to '/recipes/new'
+        @user = User.new(username: params[:username], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+        if @user && !params[:username].empty? && !params[:email].empty? && !params[:password].empty? && !params[:password_confirmation].empty?
+            if @user.save 
+                session[:user_id] = @user.id
+                redirect to '/recipes/new' 
+            else 
+                flash.now[:message] = "Username Or Email address Already Taken!"
+                erb :"/users/signup.html"
+            end
         else
-            flash[:message] = "Check Your Inputs! No Column Can't Be left Blank!"
+            flash.now[:message] = "No Column Can't Be left Blank!"
             erb :"/users/signup.html"
         end
     end

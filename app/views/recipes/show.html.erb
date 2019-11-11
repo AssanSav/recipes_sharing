@@ -1,7 +1,7 @@
 <a href="/recipes/new">Recipe Id: </a>
 
 <% if flash.has?(:message) %>
-    <h2 style="color:red;"><%= flash[:message] %></h2>
+    <h3 style="color:red;"><%= flash[:message] %></h3>
 <% end %>
 
 
@@ -25,22 +25,17 @@
         <% end %>
     <% end %><br> <br>
 
-    <form action="/recipes/<%= @recipe.id %>/comments" method="POST">
-        <textarea name="comment[content]" id="" cols="30" rows="5" placeholder="write your comment"></textarea>
-        <input type="submit" class="button" value="Add Comment">
-    </form><br>
-
 <% else %>
     <%= @recipe.id %><br><br>
     <strong>Name: </strong><%= @recipe.name %><br><br>
     <strong>Ingredients: </strong><%= @recipe.ingredient %><br><br>
     <strong>Process: </strong><%= @recipe.process %><br><br>
 
-    <a href="/recipes/<%= @recipe.id %>/edit" class="button">Edit Recipe</a><br><br>
+    <a href="/recipes/<%= @recipe.id %>/edit"><button>Edit Recipe</button></a><br><br>
 
     <form action="/recipes/<%= @recipe.id %>" method="POST">
         <input type="hidden" name="_method" value="delete">
-        <input type="submit" class="button" value="Delete Recipe">
+        <input type="submit"  value="Delete Recipe">
     </form>
 
     <h2>Comments</h2>
@@ -55,10 +50,9 @@
         <% end %>
     <% end %><br>
 
+    <% end %>
+    
     <form action="/recipes/<%= @recipe.id %>/comments" method="POST">
         <textarea name="comment[content]" id="" cols="30" rows="3" placeholder="write your comment"></textarea>
         <input type="submit" class="button" value="Add Comment">
     </form><br>
-
-<% end %>
-

@@ -10,14 +10,14 @@ class SessionController < ApplicationController
             session[:user_id] = @user.id 
             redirect to "/recipes/new"
         else 
-            flash[:message] = "Invalid Username Or Password!"
+            flash.now[:message] = "Invalid Username Or Password!"
             erb :"/users/login.html"
         end
     end
     
     delete "/logout" do
         session.clear
-        redirect "/"
+        redirect to '/'
     end
     
 end

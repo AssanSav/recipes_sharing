@@ -6,6 +6,6 @@ Dotenv.load #if ENV['SINATRA_ENV'] == "development" #=> allow the var .env to be
 
 set :database_file, "./database.yml" #=> establishing the connection to the database by directing the use of the .yml file
 
-#require './app/controllers/application_controller'
+
 require_all 'app'
 require 'pry'

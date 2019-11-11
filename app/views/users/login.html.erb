@@ -1,6 +1,6 @@
 <h1>Log In</h1>
 <% if flash.has?(:message) %>
-    <h4 style="color: brown;"><%= flash[:message] %></h4>
+    <h3 style="color: red;"><%= flash[:message] %></h3>
 <% end %>
 
 <form action="/login" method="POST">

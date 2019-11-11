@@ -1,26 +1,18 @@
-<h1>Create A New Account</h1>
+<h1>Create a New Account</h1>
 
 <% if flash.has?(:message) %>
-    <p style="color: red;"><%= flash[:message] %></p>
+    <h3 style="color: red;"><%= flash[:message] %></h3>
 <% end %>
 
 <form action="/signup" method="POST">
 
     <div class="signup">
-        <label>Username </label>
-        <input type="text" name="user[username]" />
+        <label>Username </label><input type="text" name="username"/>
+        <label>Email </label><input type="text" name="email"/>
+        <label>Password </label><input type="password" name="password"/>
+        <label>Confirm Password </label><input type="password" name="password_confirmation"/><br>
 
-        <label>Email </label>
-        <input type="text" name="user[email]" />
-
-        <label>Password </label>
-        <input type="password" name="user[password]" />
-
-        <label>Confirm Password </label>
-        <input type="password" name="user[password_confirmation]" />
-        <br>
-
-        <input type="submit" class="button" value="Subscribe" />
+        <input type="submit" class="button" value="Sign Up"/>
     </div>
 
 </form>

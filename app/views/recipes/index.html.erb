@@ -1,5 +1,9 @@
 <h3>All Recipes</h3>
 
+<% if flash.has?(:message) %>
+    <h3 style="color:red;"><%= flash[:message] %></h3>
+<% end %>
+
 <% @recipes.each.with_index(1) do |recipe, index| %>
     <ol>
         <%= index %> <br>
