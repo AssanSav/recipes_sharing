@@ -6,7 +6,6 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
 gem 'thin'
-gem 'pry'
 gem 'bcrypt'
 gem 'pg', '0.20'
 gem 'dotenv'
@@ -15,7 +14,7 @@ gem 'rails_12factor'
 gem 'sysrandom'
 gem 'json'
 gem 'rack-flash3'
-gem 'nokogiri'
+
 
 group :development do 
   gem 'sqlite3', '<1.4'
