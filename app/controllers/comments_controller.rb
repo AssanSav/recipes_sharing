@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     post "/recipes/:recipe_id/comments" do
         @recipe = Recipe.find_by_id(params[:recipe_id])
         if @recipe
-            @comment = current_user.comments.create(content: params[:comment][:content])
+            @comment = current_user.comments.new(content: params[:comment][:content])
             @comment.recipe_id = @recipe.id
             @comment.save
             flash[:message] = "Comment Successfully Created!" 

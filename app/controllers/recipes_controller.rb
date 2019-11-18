@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
 
     get "/recipes" do
-        redirect_if_not_logged_in?
         @recipes = Recipe.all
         erb :"/recipes/index.html"
     end
@@ -21,7 +20,7 @@ class RecipesController < ApplicationController
             flash[:message] = "Recipe successfully Created"
             redirect ("/recipes/#{@recipe.id}")
         else
-            flash[:message] = "No Column Can't Be Left Blank!!!"
+            flash[:message] = "No Column Can Be Left Blank!!!"
             redirect to "/recipes/new"
         end
     end
@@ -63,5 +62,5 @@ class RecipesController < ApplicationController
         flash[:message] = "Recipe Successfully Deleted!"
         redirect to '/recipes/new'
     end
-    
+
 end

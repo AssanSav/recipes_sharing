@@ -4,13 +4,8 @@
     <h3 style="color:red;"><%= flash[:message] %></h3>
 <% end %>
 
-<% @recipes.each.with_index(1) do |recipe, index| %>
-    <ol>
-        <%= index %> <br>
-        <strong>Name: </strong><%= recipe.name %></h3><br>
-        <p>
-            <strong>ingredients: </strong><%= recipe.ingredient %><br>
-        </p>
-        <strong>Process: </strong><%= recipe.process %><br><br>
-    </ol>
+<ol>
+<% @recipes.each.with_index(1) do |recipe| %>
+    <li><a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a></li>
 <% end %>
+</ol>

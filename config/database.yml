@@ -6,5 +6,5 @@ development:
 production:
   adapter: postgresql
   encoding: unicode
-  pool: 5 #=>configuring the app to use a postgresql database in production since Sqlite isn't supported under Heroku
+  pool: 5 #=>configuring the app to use  postgresql database in production since Sqlite isn't supported under Heroku
   

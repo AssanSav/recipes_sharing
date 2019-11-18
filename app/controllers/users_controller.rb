@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+    
     get "/signup" do
         erb :"/users/signup.html"
     end
@@ -15,9 +16,9 @@ class UsersController < ApplicationController
                 erb :"/users/signup.html"
             end
         else
-            flash.now[:message] = "No Column Can't Be left Blank!"
+            flash.now[:message] = "No Column Can Be left Blank!"
             erb :"/users/signup.html"
         end
     end
-  
+    
 end
