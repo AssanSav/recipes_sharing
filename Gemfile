@@ -23,7 +23,6 @@ group :development do
 end
 
 group :test do
-  gem 'pry'
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
