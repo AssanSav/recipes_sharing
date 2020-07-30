@@ -9,4 +9,4 @@ Fork and clone this repos and then run
 bundle install
 ```
 
-![App live on heroku](https://recipes-sharing.herokuapp.com/)
+<a href="https://recipes-sharing.herokuapp.com/" >App live on heroku</a>
